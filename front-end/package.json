@@ -2,10 +2,18 @@
   "name": "front-end",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
+    "axios": "^0.19.0",
+    "bootstrap": "^4.3.1",
     "react": "^16.11.0",
+    "react-axios": "^2.0.3",
     "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0"
+    "react-redux": "^7.1.1",
+    "react-scripts": "3.2.0",
+    "reactstrap": "^8.1.1",
+    "redux": "^4.0.4",
+    "victory": "^33.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
