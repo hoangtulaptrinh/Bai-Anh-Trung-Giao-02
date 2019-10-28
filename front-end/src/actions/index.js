@@ -8,4 +8,4 @@ export const GET_API = () => {
   }
 }
 
-export const GET_ALL_DATA = (arr) => { return { type: actionTypes.GET_ALL_DATA, arr: arr } }
+export const GET_ALL_DATA = (data) => { return { type: actionTypes.GET_ALL_DATA, data: data } }

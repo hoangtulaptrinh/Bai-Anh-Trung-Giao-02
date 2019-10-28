@@ -6,8 +6,7 @@ var myReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case actionTypes.GET_ALL_DATA:
-      console.log(action)
-      return state = action.arr.data;
+      return action.data;
 
     default:
       return state;
