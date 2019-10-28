@@ -1,3 +1,4 @@
 export default {
-    GET_DATA_PIE_CHART : 'GET_DATA_PIE_CHART',
+  GET_API : 'GET_API',
+  GET_ALL_DATA : 'GET_ALL_DATA'
   };

@@ -1,8 +1,12 @@
-.App {
-  text-align: center;
-  height: 500px;
-  width: 500px;
+.App{
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(214,214,215,0.6);
+  height: 100vh;
 }
-.svg {
-  overflow: inherit !important;
+.one{
+  display: flex;
+}
+.two{
+  display: flex;
 }

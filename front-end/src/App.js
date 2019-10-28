@@ -4,17 +4,27 @@ import { connect } from 'react-redux';
 import * as apiCaller from './api/apiCaller'
 import './App.css';
 import PieChart from './components/PieChart'
+import HorizontalChart from './components/HorizontalChart'
+import LineChart from './components/LineChart'
+import PieChart2 from './components/PieChart2'
 
 class App extends Component {
   componentDidMount() {
-    apiCaller.Params('/api/get_data_pie_chart', 'get', null).then(response => this.props.GET_DATA_PIE_CHART(response.data))
+    this.props.GET_API();
   }
   render() {
     const { DataPieChart } = this.props
-    const colorArr = ["cyan", "navy"]
+    const colorArr = ["tomato", "orange", "gold", "cyan", "navy", "green"]
     return (
       <div className='App'>
-        <PieChart Data={DataPieChart} colorArr={colorArr} />
+        <div className='one'>
+          <PieChart Data={DataPieChart} colorArr={colorArr} />
+          <LineChart />
+        </div>
+        <div className='two'>
+          <HorizontalChart />
+          <PieChart2 />
+        </div>
       </div>
     );
   }
@@ -27,7 +37,7 @@ const mapStatetoProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    GET_DATA_PIE_CHART: (data) => dispatch(actions.GET_DATA_PIE_CHART({ data: data }))
+    GET_API: () => { dispatch(actions.GET_ALL_DATA()) }
   }
 }
 
