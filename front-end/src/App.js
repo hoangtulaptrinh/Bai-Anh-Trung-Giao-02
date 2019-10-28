@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as actions from './actions/index';
 import { connect } from 'react-redux';
-import * as apiCaller from './api/apiCaller'
+// import * as apiCaller from './api/apiCaller'
 import './App.css';
 import PieChart from './components/PieChart'
 import HorizontalChart from './components/HorizontalChart'
@@ -37,7 +37,7 @@ const mapStatetoProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    GET_API: () => { dispatch(actions.GET_ALL_DATA()) }
+    GET_API: () => { dispatch(actions.GET_API()) }
   }
 }
 
