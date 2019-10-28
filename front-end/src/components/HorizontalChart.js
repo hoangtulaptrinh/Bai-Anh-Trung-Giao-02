@@ -4,14 +4,7 @@ import './HorizontalChart.css';
 
 class HorizontalChart extends Component {
   render() {
-    const data = [
-      { x: 'Day 1', y: 13000 },
-      { x: 'Day 2', y: 16500 },
-      { x: 'Day 3', y: 14250 },
-      { x: 'Day 4', y: 19000 },
-      { x: 'Day 5', y: 13000 },
-      { x: 'Day 6', y: 16500 },
-    ];
+    const { Data } = this.props
     return (
       <div className='HorizontalChart'>
         <div className='HorizontalChart-Title'>
@@ -25,7 +18,7 @@ class HorizontalChart extends Component {
           <VictoryBar horizontal
             labels={({ datum }) => datum.y}
             style={{ data: { fill: "#EFE4FE" }, }}
-            data={data}
+            data={Data}
             labelComponent={<VictoryLabel dx={-35} />} //cho lùi lại 35px để số vào trong hàng
           />
         </VictoryChart>

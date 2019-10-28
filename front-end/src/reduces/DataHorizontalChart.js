@@ -5,7 +5,7 @@ var initialState = []
 var myReducer = (state = initialState, action) => {
   switch (action.type) {
 
-    case actionTypes.GET_DATA_PIE_CHART:
+    case actionTypes.GET_DATA_HORIZONTAL_CHART:
       return state = action.data;
 
     default:
