@@ -29,7 +29,7 @@ class PieChart extends Component {
                     <div className='SmartPhone' style={{ background: colorArr[index] }} />
                     {/* check nếu tồn tại (tức là đã get Api đó) */}
                     {item.x !== undefined ?
-                      <div className='info-item'>
+                      <div className='Info-item'>
                         <h5>{item.x}</h5>
                         <h5>{item.y} %</h5>
                       </div>

@@ -12,17 +12,17 @@ class App extends Component {
     this.props.GET_API();
   }
   render() {
-    const { DataPieChart, DataHorizontalChart, DataLineChart } = this.props
+    const { DataPieChart, DataHorizontalChart, DataLineChart, DataPieChart2 } = this.props
     const colorArr = ["tomato", "orange", "gold", "cyan", "navy", "green"]
     return (
       <div className='App'>
         <div className='one'>
           <PieChart Data={DataPieChart} colorArr={colorArr} />
-          <LineChart Data={DataLineChart} colorArr={colorArr}/>
+          <LineChart Data={DataLineChart} colorArr={colorArr} />
         </div>
         <div className='two'>
           <HorizontalChart Data={DataHorizontalChart} />
-          <PieChart2 />
+          <PieChart2 Data={DataPieChart2} />
         </div>
       </div>
     );
@@ -33,7 +33,8 @@ const mapStatetoProps = (state) => {
   return {
     DataPieChart: state.DataPieChart,
     DataHorizontalChart: state.DataHorizontalChart,
-    DataLineChart: state.DataLineChart
+    DataLineChart: state.DataLineChart,
+    DataPieChart2: state.DataPieChart2
   }
 }
 const mapDispatchToProps = (dispatch) => {
