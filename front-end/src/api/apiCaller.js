@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export function Data(url, method, body) {
+export function request_infused_by_data(url, method, body) {
   return axios({
     method: method,
     url: url,
@@ -11,7 +11,7 @@ export function Data(url, method, body) {
     });
 };
 
-export function Params(url, method = 'GET', body) {
+export function request_infused_by_params(url, method = 'GET', body) {
   return axios({
     method: method,
     url: url,

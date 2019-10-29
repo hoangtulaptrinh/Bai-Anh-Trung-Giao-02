@@ -6,7 +6,7 @@ import PieChart from './components/PieChart'
 
 class App extends Component {
   componentDidMount() {
-    this.props.GET_API();
+    this.props.getApi();
   }
   render() {
     const { DataPieChart } = this.props
@@ -26,7 +26,7 @@ const mapStatetoProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    GET_API: () => { dispatch(actions.GET_API()) }
+    getApi: () => { dispatch(actions.GET_API()) }
   }
 }
 
