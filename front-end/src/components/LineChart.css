@@ -1,9 +1,11 @@
 .LineChart{
+  display: flex;
+  justify-content: center;
     background-color: white;
     border: 0.1px solid rgba(214,214,215,0.8);
     padding: 10px;
     margin: 7px;
-    flex: 1;
+    flex: 2;
 }
 .LineChart-Title{
   top: 10px;

@@ -38,3 +38,7 @@
   display: flex;
   flex-direction: column;
 }
+.Total-Chart-2 > .VictoryContainer {
+  display: flex;
+  justify-content: center;
+}

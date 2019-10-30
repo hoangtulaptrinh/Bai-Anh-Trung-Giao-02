@@ -11,10 +11,15 @@ class HorizontalChart extends Component {
           <h4>Ranking</h4>
         </div>
         <VictoryChart
-          domainPadding={{ x: 6 }}
+          domainPadding={{ x: 8 }}
+          padding={{ top: 10, bottom: 20, left: 60 }}
+        // range={{ x: [60, 450], y: [50, 200] }}
         >
           {/* xóa bỏ cột Y  */}
-          <VictoryAxis offsetY />
+          <VictoryAxis
+            // range={{ x: [50, 250], y: [50, 200] }}
+            offsetY
+          />
           <VictoryBar horizontal
             labels={({ datum }) => datum.y}
             style={{ data: { fill: "#EFE4FE" }, }}
