@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
-import DataPieChart from './DaTaPieChart'
+import dataPieChart from './daTaPieChart'
 const myReducer = combineReducers({
-    DataPieChart : DataPieChart,
+    dataPieChart : dataPieChart,
 });
 
 export default myReducer;
