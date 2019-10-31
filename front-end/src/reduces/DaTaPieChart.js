@@ -5,7 +5,7 @@ var initialState = []
 var myReducer = (state = initialState, action) => {
   switch (action.type) {
 
-    case actionTypes.GET_ALL_DATA:
+    case actionTypes.getDataPieChart:
       return action.data;
 
     default:

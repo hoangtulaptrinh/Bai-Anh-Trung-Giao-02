@@ -26,7 +26,7 @@ const mapStatetoProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    getApi: () => { dispatch(actions.GET_API()) }
+    getApi: () => { dispatch(actions.getApi()) }
   }
 }
 

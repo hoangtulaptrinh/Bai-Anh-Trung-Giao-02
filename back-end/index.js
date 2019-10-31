@@ -10,7 +10,10 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/get_data_pie_chart', (req, res) => {
-  res.send(DataPieChart)
+  setTimeout(function () {
+    res.send(DataPieChart);
+  }, 10000);
+
 })
 
 app.listen(5000, () => {

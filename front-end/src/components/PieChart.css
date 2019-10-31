@@ -5,6 +5,7 @@
   padding: 10px;
   margin: 7px;
   align-items: center;
+  min-height: 400px;
 }
 
 .SmartPhone{
@@ -46,4 +47,16 @@ h5{
 
 .PieChart-Title > h4{
 	font-weight: lighter;
+}
+
+.chartAndItem{
+	display: flex;
+}
+.Total-Spinner{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+.Total-Spinner > h3{
+  padding-right: 30px;
 }
