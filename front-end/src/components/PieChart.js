@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { Row, Col, Spinner, Progress } from 'reactstrap';
 import { VictoryPie } from 'victory';
 import './PieChart.css';
@@ -13,7 +13,7 @@ class PieChart extends Component {
   }
   incrementCount = () => {
     setTimeout(() => {
-      this.setState({count: this.state.count +1.1});
+      this.setState({ count: this.state.count + 1.1 });
     }, 100)
   }
   render() {
