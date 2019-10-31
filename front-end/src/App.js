@@ -13,7 +13,7 @@ class App extends Component {
     const colorArr = ["tomato", "orange", "gold", "cyan", "navy", "green"]
     return (
       <div className='App'>
-          <PieChart Data={dataPieChart} colorArr={colorArr} />
+        <PieChart Data={dataPieChart} colorArr={colorArr} />
       </div>
     );
   }
