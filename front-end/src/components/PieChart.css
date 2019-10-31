@@ -54,9 +54,20 @@ h5{
 }
 .Total-Spinner{
   display: flex;
+  width: 300px;
+  justify-content: space-between;
+  align-items: center;
+}
+.Progress-h3{
+  height: 50px !important;
+}
+.Spinner{
+  height: 50px !important;
+  width: 50px !important;
+  margin-right: -30px;
+}
+.flex-center{
+  display: flex;
   flex: 1;
   justify-content: center;
-}
-.Total-Spinner > h3{
-  padding-right: 30px;
 }

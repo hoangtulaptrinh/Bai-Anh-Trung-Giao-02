@@ -1,21 +1,35 @@
-import React, { Component } from 'react';
-import { Row, Col, Spinner } from 'reactstrap';
+import React, { Component, useState } from 'react';
+import { Row, Col, Spinner, Progress } from 'reactstrap';
 import { VictoryPie } from 'victory';
 import './PieChart.css';
 
 class PieChart extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+    this.incrementCount = this.incrementCount.bind(this);
+  }
+  incrementCount = () => {
+    setTimeout(() => {
+      this.setState({count: this.state.count +1});
+    }, 100)
+  }
   render() {
     const { Data, colorArr } = this.props
-    console.log(Data)
+    this.incrementCount();
     return (
       <div className='PieChart'>
         <div className='PieChart-Title'>
           <h4>Device Type</h4>
         </div>
         {Data[0] === undefined ?
-        <div className='Total-Spinner'>
-          <h3>Waiting for backend</h3>
-          <Spinner color="info" />
+          <div className='flex-center'>
+            <div className='Total-Spinner'>
+              <Progress className='Progress-h3' animated color="info" value={this.state.count} ><h3>Waiting for backend</h3></Progress>
+              <Spinner className='Spinner' color="info" />
+            </div>
           </div>
           :
           <div className='chartAndItem'>
