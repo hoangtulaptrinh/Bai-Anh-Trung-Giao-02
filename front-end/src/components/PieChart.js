@@ -4,6 +4,18 @@ import { VictoryPie } from 'victory';
 import './PieChart.css';
 
 class PieChart extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+    this.incrementCount = this.incrementCount.bind(this);
+  }
+  incrementCount = () => {
+    setTimeout(() => {
+      this.setState({ count: this.state.count + 1.1 });
+    }, 100)
+  }
   render() {
     const { Data, colorArr } = this.props
     return (
