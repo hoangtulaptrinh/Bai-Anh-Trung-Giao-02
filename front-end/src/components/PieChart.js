@@ -13,7 +13,7 @@ class PieChart extends Component {
   }
   incrementCount = () => {
     setTimeout(() => {
-      this.setState({ count: this.state.count + 1.11 });
+      this.setState({ count: this.state.count + 1.1 });
     }, 100)
   }
   render() {
