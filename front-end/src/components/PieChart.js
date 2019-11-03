@@ -1,38 +1,25 @@
-import React, { Component, useState } from 'react';
-import { Row, Col, Spinner, Progress } from 'reactstrap';
+import React, { Component } from 'react';
+import { Row, Col, Spinner } from 'reactstrap';
 import { VictoryPie } from 'victory';
+import * as actions from '../actions/index';
 import './PieChart.css';
 
 class PieChart extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0
-    };
-    this.incrementCount = this.incrementCount.bind(this);
-  }
-  incrementCount = () => {
-    setTimeout(() => {
-      this.setState({ count: this.state.count + 1 });
-    }, 100)
-  }
   render() {
     const { Data, colorArr } = this.props
-    this.incrementCount();
     return (
-      <div className='PieChart'>
-        <div className='PieChart-Title'>
+      <div className='pieChart'>
+        <div className='pieChart-title'>
           <h4>Device Type</h4>
         </div>
-        {Data[0] === undefined ?
+        {actions.hasResponse !== true ?
           <div className='flex-center'>
-            <div className='Total-Spinner'>
-              <Progress className='Progress-h3' animated color="info" value={this.state.count} ><h3>Waiting for backend</h3></Progress>
+            <div className='total-spinner'><h3>Waiting for backend</h3>
               <Spinner className='Spinner' color="info" />
             </div>
           </div>
           :
-          <div className='chartAndItem'>
+          <div className='chart-and-item'>
             <div className='Pie'>
               <VictoryPie
                 labels={[]} //đễ rỗng để ẩn đi label
@@ -42,13 +29,13 @@ class PieChart extends Component {
                 data={Data}
               />
             </div>
-            <div className='Total-Info'>
+            <div className='total-info'>
               <Row>
                 {
                   Data.map((item, index) => (
-                    <Col sm="4" className='Col'>
-                      <div className='Info' key={index} >
-                        <div className='SmartPhone' style={{ background: colorArr[index] }} />
+                    <Col sm="4" className='col' key={index}>
+                      <div className='info' key={index} >
+                        <div className='smartPhone' style={{ background: colorArr[index] }} />
                         {/* check nếu tồn tại (tức là đã get Api đó) */}
                         {item.x !== undefined ?
                           <div className='info-item'>
