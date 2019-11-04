@@ -1,5 +1,4 @@
 .App{
   display: flex;
-  flex-direction: column;
   background-color: rgba(214,214,215,0.6);
 }

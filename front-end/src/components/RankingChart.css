@@ -1,0 +1,31 @@
+.ranking-chart{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 0.1px solid rgba(214,214,215,0.8);
+  padding: 10px;
+  margin: 7px;
+  flex: 2;
+}
+.ranking-chart-title{
+  top: 10px;
+}
+.ranking-chart-title > h4{
+  font-weight: lighter;
+}
+.flex-center-2{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+.total-spinner-2{
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+  align-items: center;
+}
+.spinner-2{
+  height: 50px !important;
+  width: 50px !important;
+  margin-right: -30px;
+}
