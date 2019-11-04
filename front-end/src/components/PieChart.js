@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { Row, Col, Spinner } from 'reactstrap';
 import { VictoryPie } from 'victory';
-import * as actions from '../actions/index';
 import './PieChart.css';
 
 class PieChart extends Component {
   render() {
-    const { Data, colorArr } = this.props
+    const { Data, checkResponse, colorArr } = this.props
     return (
       <div className='pieChart'>
         <div className='pieChart-title'>
           <h4>Device Type</h4>
         </div>
-        {actions.hasResponse !== true ?
+        {checkResponse === false ?
           <div className='flex-center'>
             <div className='total-spinner'><h3>Waiting for backend</h3>
               <Spinner className='Spinner' color="info" />
