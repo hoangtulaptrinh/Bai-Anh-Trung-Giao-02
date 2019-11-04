@@ -1,13 +1,14 @@
-.PieChart{
+.pie-chart{
   display: flex;
   background-color: white;
   border: 0.1px solid rgba(214,214,215,0.8);
   padding: 10px;
   margin: 7px;
   align-items: center;
+  min-height: 400px;
 }
 
-.SmartPhone{
+.smart-phone{
   display: flex;
   width: 50px;
   height: 50px;
@@ -23,27 +24,50 @@ h5{
   align-items: center;
 }
 
-.Info{
+.info{
   display: flex;
   align-items: center;
 }
 
-.Col{
+.col{
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
 
-.Total-Info{
+.total-info{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.PieChart-Title{
+.pieChart-title{
   top: 10px;
   position: absolute;
 }
 
-.PieChart-Title > h4{
+.pieChart-title > h4{
   font-weight: lighter;
+}
+
+.chart-and-item{
+  display: flex;
+}
+.total-spinner{
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+  align-items: center;
+}
+.Progress-h3{
+  height: 50px !important;
+}
+.Spinner{
+  height: 50px !important;
+  width: 50px !important;
+  margin-right: -30px;
+}
+.flex-center{
+  display: flex;
+  flex: 1;
+  justify-content: center;
 }

@@ -1,12 +1,18 @@
 import actionTypes from '../const/actionTypes';
 
-var initialState = []
+var initialState = {
+  data: [],
+  checkResponse: false
+}
 
 var myReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case actionTypes.getDataPieChart:
-      return action.data;
+      return {
+        data: action.data,
+        checkResponse: action.checkResponse
+      };
 
     default:
       return state;
