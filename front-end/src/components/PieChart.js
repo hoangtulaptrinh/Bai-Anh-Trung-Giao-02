@@ -7,7 +7,7 @@ class PieChart extends Component {
   render() {
     const { Data, checkResponse, colorArr } = this.props
     return (
-      <div className='pieChart'>
+      <div className='pie-chart'>
         <div className='pieChart-title'>
           <h4>Device Type</h4>
         </div>
@@ -34,7 +34,7 @@ class PieChart extends Component {
                   Data.map((item, index) => (
                     <Col sm="4" className='col' key={index}>
                       <div className='info' key={index} >
-                        <div className='smartPhone' style={{ background: colorArr[index] }} />
+                        <div className='smart-phone' style={{ background: colorArr[index] }} />
                         {/* check nếu tồn tại (tức là đã get Api đó) */}
                         {item.x !== undefined ?
                           <div className='info-item'>
