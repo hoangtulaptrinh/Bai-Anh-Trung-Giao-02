@@ -28,6 +28,13 @@
   width: 50px !important;
   margin-right: -30px;
 }
-/* .info-chart{
+.info-chart{
   display: flex;
-} */
+  flex: 1;
+}
+.total-progress{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex: 1;
+}

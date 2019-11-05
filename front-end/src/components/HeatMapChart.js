@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
-import { Spinner } from 'reactstrap';
+import { Spinner, Progress } from 'reactstrap';
 import './HeatMapChart.css'
+import _ from 'lodash'
 
 class App extends Component {
   render() {
@@ -14,6 +15,17 @@ class App extends Component {
       yaxis: {
         show: false //xóa bỏ phần yaxis phía bên trái
       },
+    }
+    var total = function totalValue(index) {
+      if (checkResponse === true)
+        return _.reduce(Data[index].data, function (sum, n) {
+          return sum + n.y;
+        }, 0)
+    }
+    let maxValue = total(0);
+    for (let i = 0; i++; i <= Data.length) {
+      if (total(i) > maxValue)
+        maxValue = total(i)
     }
     return (
       <div className="heat-map-chart">
@@ -28,12 +40,24 @@ class App extends Component {
           </div>
           :
           <div className='info-chart'>
-          <Chart
-            options={options}
-            series={Data}
-            type="heatmap"
-            width="1000px"
-          />
+            <Chart
+              options={options}
+              series={Data}
+              type="heatmap"
+              width="1000px"
+            />
+            <div className='total-progress'>
+              {
+                Data.map((item, index) => (
+                  <div key={index}>
+                    <h5>{item.name}</h5>
+                    <Progress animated color='info' value={total(index)} max={maxValue} >
+                      {total(index)}
+                    </Progress>
+                  </div>
+                ))
+              }
+            </div>
           </div>
         }
       </div>

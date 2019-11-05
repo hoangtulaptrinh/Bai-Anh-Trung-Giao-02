@@ -13,7 +13,6 @@ class App extends Component {
   render() {
     const { dataPieChart, dataRankingChart, dataHeatMapChart } = this.props
     const colorArr = ["tomato", "orange", "gold", "cyan", "navy", "green"]
-    console.log(dataHeatMapChart)
     return (
       <div className='App'>
         <div className='row-1'>
