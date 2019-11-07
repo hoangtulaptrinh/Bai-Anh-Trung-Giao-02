@@ -15,9 +15,17 @@ export const getApi = () => {
           dispatch(getDataRankingChart(res.data, true))
         }
       })
+    apiCaller.request_infused_by_params('/api/get_data_heat_map_chart', 'get', null)
+      .then(res => {
+        if (res.statusText === 'OK') {
+          dispatch(getDataHeatMapChart(res.data, true))
+        }
+      })
   }
 }
 
 export const getDataPieChart = (data, checkResponse) => { return { type: actionTypes.getDataPieChart, data: data, checkResponse: checkResponse } }
 
 export const getDataRankingChart = (data, checkResponse) => { return { type: actionTypes.getDataRankingChart, data: data, checkResponse: checkResponse } }
+
+export const getDataHeatMapChart = (data, checkResponse) => { return { type: actionTypes.getDataHeatMapChart, data: data, checkResponse: checkResponse } }
