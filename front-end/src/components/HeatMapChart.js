@@ -14,13 +14,8 @@ class App extends Component {
   }
 
   maxValue() {
-    let maxDataValue = this.totalValue(0);
-    for (let i = 0; i < this.props.Data.length; i++) {
-      if (this.totalValue(i) > maxDataValue) {
-        maxDataValue = this.totalValue(i)
-      }
-    }
-    return maxDataValue;
+    let sumValues  = _.map(this.props.Data, (val) => _.sumBy(val.data, 'y'));
+    return _.max(sumValues);
   }
 
   render() {
@@ -34,6 +29,7 @@ class App extends Component {
         show: false //xóa bỏ phần yaxis phía bên trái
       },
     }
+    const getMaxValue = this.maxValue();
     return (
       <div className="heat-map-chart">
         <div className='heat-map-chart-title'>
@@ -58,7 +54,7 @@ class App extends Component {
                 Data.map((item, index) => (
                   <div key={index}>
                     <h5>{item.name}</h5>
-                    <Progress animated color='info' value={this.totalValue(index)} max={this.maxValue()} >
+                    <Progress animated color='info' value={this.totalValue(index)} max={getMaxValue} >
                       {this.totalValue(index)}
                     </Progress>
                   </div>
