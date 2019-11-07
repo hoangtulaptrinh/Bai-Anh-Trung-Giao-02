@@ -8,9 +8,7 @@ class App extends Component {
 
   totalValue(index) {
     if (this.props.checkResponse === true)
-      return _.reduce(this.props.Data[index].data, function (sum, n) {
-        return sum + n.y;
-      }, 0)
+      return _.sumBy(this.props.Data[index].data,'y')
   }
 
   maxValue() {
