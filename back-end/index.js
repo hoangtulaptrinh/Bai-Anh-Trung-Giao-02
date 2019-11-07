@@ -2,27 +2,60 @@ const express = require('express')
 var bodyParser = require('body-parser')
 const app = express()
 app.use(bodyParser.json())
-const dataPieChart = require('./Data/DataPieChart')
-const dataRankingChart = require('./Data/DataRankingChart')
-const dataHeatMapChart = require('./Data/DataHeatMapChart')
+let dataPieChart = require('./Data/DataPieChart')
+let dataRankingChart = require('./Data/DataRankingChart')
+let dataHeatMapChart = require('./Data/DataHeatMapChart')
+const _ = require('lodash');
 
 app.get('/', (req, res) => {
   res.send('hello from server!')
 })
 
 app.get('/api/get_data_pie_chart', (req, res) => {
+  if (req.query.from_date !== undefined) {
+    dataPieChart = [
+      { x: "Android", y: _.random(0, 100) },
+      { x: "Windows", y: _.random(0, 100) },
+      { x: "Ios", y: _.random(0, 100) },
+      { x: "Os X", y: _.random(0, 100) },
+      { x: "Unknown", y: _.random(0, 100) },
+      { x: "Linux", y: _.random(0, 100) }
+    ]
+  }
   setTimeout(function () {
     res.send(dataPieChart);
   }, 10000);
 })
 
 app.get('/api/get_data_ranking_chart', (req, res) => {
+  if (req.query.from_date !== undefined) {
+    dataRankingChart = [
+      { x: "PUBG", y: _.random(10000000, 100000000) },
+      { x: "Minecraft", y: _.random(10000000, 100000000) },
+      { x: "Diablo III", y: _.random(10000000, 100000000) },
+      { x: "WOW", y: _.random(10000000, 100000000) },
+      { x: "Terraria", y: _.random(10000000, 100000000) },
+      { x: "The Sims", y: _.random(10000000, 100000000) }
+    ]
+  }
   setTimeout(function () {
     res.send(dataRankingChart);
   }, 15000);
 })
 
 app.get('/api/get_data_heat_map_chart', (req, res) => {
+  if (req.query.from_date !== undefined) {
+    dataHeatMapChart = _.map(
+      ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
+      (day) => ({
+        name: day,
+        data: _.map(_.range(0, 24), time => ({
+          x: `${time}:00`,
+          y: _.random(0, 2) !== 2 ? _.random(0, 30) : _.random(0, 50)
+        }))
+      })
+    )
+  }
   setTimeout(function () {
     res.send(dataHeatMapChart);
   }, 5000);

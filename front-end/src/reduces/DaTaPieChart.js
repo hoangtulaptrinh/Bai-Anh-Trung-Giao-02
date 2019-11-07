@@ -14,6 +14,12 @@ var myReducer = (state = initialState, action) => {
         checkResponse: action.checkResponse
       };
 
+    case actionTypes.showLoading:
+      return {
+        data: state.data,
+        checkResponse: false
+      }
+
     default:
       return state;
   }

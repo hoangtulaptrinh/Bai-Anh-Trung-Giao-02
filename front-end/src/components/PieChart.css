@@ -1,11 +1,10 @@
 .pie-chart{
-  display: flex;
   background-color: white;
   border: 0.1px solid rgba(214,214,215,0.8);
   padding: 10px;
   margin: 7px;
   align-items: center;
-  min-height: 500px;
+  min-height: 400px;
   flex: 3;
 }
 
@@ -43,7 +42,6 @@ h5{
 }
 .pieChart-title{
   top: 10px;
-  position: absolute;
 }
 
 .pieChart-title > h4{
@@ -52,6 +50,8 @@ h5{
 
 .chart-and-item{
   display: flex;
+  align-items: center;
+  min-height: 390px;
 }
 .total-spinner{
   display: flex;
@@ -69,6 +69,6 @@ h5{
 }
 .flex-center{
   display: flex;
-  flex: 1;
   justify-content: center;
+  min-height: 390px;
 }
