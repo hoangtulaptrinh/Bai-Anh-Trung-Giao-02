@@ -8,11 +8,11 @@ class App extends Component {
 
   totalValue(index) {
     if (this.props.checkResponse === true)
-      return _.sumBy(this.props.Data[index].data,'y')
+      return _.sumBy(this.props.Data[index].data, 'y')
   }
 
   maxValue() {
-    let sumValues  = _.map(this.props.Data, (val) => _.sumBy(val.data, 'y'));
+    let sumValues = _.map(this.props.Data, (val) => _.sumBy(val.data, 'y'));
     return _.max(sumValues);
   }
 
