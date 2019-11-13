@@ -1,0 +1,12 @@
+.dropDown-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 10px 0 10px;
+}
+.icon-check{
+  color : white;
+}
+.check{
+  color: black;
+}

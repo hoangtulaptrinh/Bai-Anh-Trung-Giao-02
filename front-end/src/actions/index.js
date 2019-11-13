@@ -28,8 +28,15 @@ export const getApi = (data) => {
           dispatch(getDataHeatMapChart(res.data, true))
         }
       })
+    apiCaller.request_infused_by_params('/api/get_name_os_arr', 'get', null)
+      .then(res => {
+        if (res.statusText === 'OK') {
+          dispatch(getNameOsArr(res.data))
+        }
+      })
   }
 }
+
 
 export const getDataPieChart = (data, checkResponse) => { return { type: actionTypes.getDataPieChart, data: data, checkResponse: checkResponse } }
 
@@ -40,3 +47,21 @@ export const getDataHeatMapChart = (data, checkResponse) => { return { type: act
 export const setDateRangePicker = (data) => { return { type: actionTypes.setDateRangePicker, data: data } }
 
 export const showLoading = () => { return { type: actionTypes.showLoading } }
+
+export const setOsChoose = (nameOs) => { return { type: actionTypes.setOsChoose, nameOs: nameOs } }
+
+export const getDataPieChartChooseByOs = (data) => {
+  let objChooseOs = data;
+  return (dispatch) => {
+    apiCaller.request_infused_by_params('/api/get_data_pie_chart_choose_by_os', 'get', objChooseOs)
+      .then(res => {
+        if (res.statusText === 'OK') {
+          dispatch(getDataPieChart(res.data, true))
+        }
+      })
+  }
+}
+
+export const showLoadingPieChart = () => { return { type: actionTypes.showLoadingPieChart } }
+
+export const getNameOsArr = (nameOsArr) => { return { type: actionTypes.getNameOsArr, nameOsArr: nameOsArr } }

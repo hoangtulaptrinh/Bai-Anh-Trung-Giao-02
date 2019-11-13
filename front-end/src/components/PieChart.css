@@ -40,11 +40,14 @@ h5{
   flex-direction: column;
   justify-content: center;
 }
-.pieChart-title{
+.title-and-dropDown{
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
   top: 10px;
 }
 
-.pieChart-title > h4{
+.title-and-dropDown > h4{
   font-weight: lighter;
 }
 

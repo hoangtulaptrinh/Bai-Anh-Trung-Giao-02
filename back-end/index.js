@@ -6,7 +6,12 @@ let dataPieChart = require('./Data/DataPieChart')
 let dataRankingChart = require('./Data/DataRankingChart')
 let dataHeatMapChart = require('./Data/DataHeatMapChart')
 const _ = require('lodash');
-
+const nameOsArr = _.map(dataPieChart, function square(n) {
+  return {
+    x: n.x,
+    isChoose: n.isChoose
+  }
+});
 app.get('/', (req, res) => {
   res.send('hello from server!')
 })
@@ -14,12 +19,12 @@ app.get('/', (req, res) => {
 app.get('/api/get_data_pie_chart', (req, res) => {
   if (req.query.from_date !== undefined) {
     dataPieChart = [
-      { x: "Android", y: _.random(0, 100) },
-      { x: "Windows", y: _.random(0, 100) },
-      { x: "Ios", y: _.random(0, 100) },
-      { x: "Os X", y: _.random(0, 100) },
-      { x: "Unknown", y: _.random(0, 100) },
-      { x: "Linux", y: _.random(0, 100) }
+      { x: "Android", y: _.random(0, 100), isChoose: false },
+      { x: "Windows", y: _.random(0, 100), isChoose: false },
+      { x: "Ios", y: _.random(0, 100), isChoose: false },
+      { x: "Os X", y: _.random(0, 100), isChoose: false },
+      { x: "Unknown", y: _.random(0, 100), isChoose: false },
+      { x: "Linux", y: _.random(0, 100), isChoose: false }
     ]
   }
   setTimeout(function () {
@@ -59,6 +64,30 @@ app.get('/api/get_data_heat_map_chart', (req, res) => {
   setTimeout(function () {
     res.send(dataHeatMapChart);
   }, 5000);
+})
+
+app.get('/api/get_data_pie_chart_choose_by_os', (req, res) => {
+  const objOsChoose = req.query;
+  let coppyDataPieChart = [
+    { x: "Android", y: _.random(0, 100), isChoose: false },
+    { x: "Windows", y: _.random(0, 100), isChoose: false },
+    { x: "Ios", y: _.random(0, 100), isChoose: false },
+    { x: "Os X", y: _.random(0, 100), isChoose: false },
+    { x: "Unknown", y: _.random(0, 100), isChoose: false },
+    { x: "Linux", y: _.random(0, 100), isChoose: false }
+  ]
+  let dataPieChartChooseByOs = [];
+  for (let i = 0; i < Object.keys(objOsChoose).length; i++) {
+    _.find(coppyDataPieChart, function (o) { return o.x === objOsChoose[i] });
+    dataPieChartChooseByOs.push(_.find(coppyDataPieChart, function (o) { return o.x === objOsChoose[i] }))
+  }
+  setTimeout(function () {
+    res.send(dataPieChartChooseByOs);
+  }, 2000);
+})
+
+app.get('/api/get_name_os_arr', (req, res) => {
+  res.send(nameOsArr);
 })
 
 app.listen(5000, () => {

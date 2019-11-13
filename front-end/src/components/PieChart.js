@@ -2,14 +2,73 @@ import React, { Component } from 'react';
 import { Row, Col, Spinner } from 'reactstrap';
 import { VictoryPie } from 'victory';
 import './PieChart.css';
+import DropDownPieChart from './dropDown/dropDownPieChart'
+import { connect } from 'react-redux';
+import * as actions from '../actions/index';
+import _ from 'lodash'
 
 class PieChart extends Component {
+  constructor(props) {
+    super(props)
+    this.wrapperRef = React.createRef()
+    this.state = {
+      currentOsChoose: []
+    }
+  }
+
+  checkArraysMatch = function (arr1, arr2) {
+
+    // kiểm tra độ dài mảng có bằng nhau hay không 
+    if (arr1.length !== arr2.length) return false;
+
+    //kiểm tra các phần tử ở trong
+    for (var i = 0; i < arr1.length; i++) {
+      if (arr1[i] !== arr2[i]) return false;
+    }
+
+    // Nếu không thì, return true
+    return true;
+
+  }
+
+  addEventClickOnBody = () => {
+    document.addEventListener('click', this.clickOutSide)
+  }
+  clickOutSide = (event) => {
+    const { target } = event;
+    const { dataPieChart, getDataPieChartChooseByOs, showLoadingPieChart } = this.props;
+    if (!this.wrapperRef.current.contains(target)) {
+      const mapArr = _.map(dataPieChart.nameOsArr, function (item) {
+        if (item.isChoose === true)
+          return item.x
+      })
+      var chooseOsArr = _.remove(mapArr, function (n) {
+        return n !== undefined;
+      });
+      if (chooseOsArr.length === 0) {
+        return alert('Choose at least 1 Os')
+      }
+      if (this.checkArraysMatch(this.state.currentOsChoose, chooseOsArr) === true) {
+        return alert("Don't choose duplicate operating systems")
+      }
+      this.setState({
+        currentOsChoose: chooseOsArr
+      })
+      showLoadingPieChart();
+      getDataPieChartChooseByOs(chooseOsArr);
+      // xóa bỏ event add Click để tránh rener lại khi click và không gây ảnh hưởng đến các component khác
+      document.removeEventListener('click', this.clickOutSide)
+    }
+  }
   render() {
     const { Data, checkResponse, colorArr } = this.props
     return (
       <div className='pie-chart'>
-        <div className='pieChart-title'>
+        <div className='title-and-dropDown'>
           <h4>Device Type</h4>
+          <div className='dropDown-pieChart' ref={this.wrapperRef}>
+            <DropDownPieChart addEventClickOnBody={() => this.addEventClickOnBody()} />
+          </div>
         </div>
         {checkResponse === false ?
           <div className='flex-center'>
@@ -51,10 +110,21 @@ class PieChart extends Component {
             </div>
           </div>
         }
-
       </div>
     );
   }
 }
 
-export default PieChart;
+const mapStatetoProps = (state) => {
+  return {
+    dataPieChart: state.dataPieChart,
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    showLoadingPieChart: () => { dispatch(actions.showLoadingPieChart()) },
+    getDataPieChartChooseByOs: (data) => { dispatch(actions.getDataPieChartChooseByOs(data)) },
+  }
+}
+
+export default connect(mapStatetoProps, mapDispatchToProps)(PieChart);
