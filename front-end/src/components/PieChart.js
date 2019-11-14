@@ -19,11 +19,11 @@ class PieChart extends Component {
     const { target } = event;
     const { dataPieChart, getDataPieChartChooseByOs } = this.props;
     if (!this.wrapperRef.current.contains(target)) {
-      const mapArr = _.map(dataPieChart.nameOsArr, function (item) {
+      const mapArr = _.map(dataPieChart.nameOsArr, (item) => {
         if (item.isChoose === true)
           return item.x
       })
-      var chooseOsArr = _.remove(mapArr, function (n) {
+      var chooseOsArr = _.remove(mapArr, (n) => {
         return n !== undefined;
       });
       getDataPieChartChooseByOs(dataPieChart.currentOsChoose, chooseOsArr);

@@ -35,12 +35,11 @@ var myReducer = (state = initialState, action) => {
       }
 
     case actionTypes.getNameOsArr:
-      state.nameOsArr = _.map(action.nameOsArr, function addIsChoose(n) {
-        return {
-          x: n.x,
-          isChoose: false
-        }
-      });
+      state.nameOsArr = _.map(action.nameOsArr, (n) => ({
+        x: n.x,
+        isChoose: false
+      }))
+
       return state;
 
     case actionTypes.setOsChoose:

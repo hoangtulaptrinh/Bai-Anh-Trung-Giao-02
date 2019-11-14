@@ -1,7 +1,7 @@
 import actionTypes from '../const/actionTypes';
 import * as apiCaller from '../api/apiCaller'
 
-const checkArraysMatch = function (arr1, arr2) {
+const checkArraysMatch = (arr1, arr2) => {
   // kiểm tra độ dài mảng có bằng nhau hay không 
   if (arr1.length !== arr2.length) return false;
   //kiểm tra các phần tử ở trong có bằng nhau hay không
