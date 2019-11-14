@@ -11,9 +11,6 @@ class PieChart extends Component {
   constructor(props) {
     super(props)
     this.wrapperRef = React.createRef()
-    this.state = {
-      currentOsChoose: []
-    }
   }
 
   checkArraysMatch = function (arr1, arr2) {
@@ -21,12 +18,12 @@ class PieChart extends Component {
     // kiểm tra độ dài mảng có bằng nhau hay không 
     if (arr1.length !== arr2.length) return false;
 
-    //kiểm tra các phần tử ở trong
+    //kiểm tra các phần tử ở trong có bằng nhau hay không
     for (var i = 0; i < arr1.length; i++) {
       if (arr1[i] !== arr2[i]) return false;
     }
 
-    // Nếu không thì, return true
+    // Nếu không sao thì return true
     return true;
 
   }
@@ -36,7 +33,7 @@ class PieChart extends Component {
   }
   clickOutSide = (event) => {
     const { target } = event;
-    const { dataPieChart, getDataPieChartChooseByOs, showLoadingPieChart } = this.props;
+    const { dataPieChart, getDataPieChartChooseByOs, showLoadingPieChart, setCurrentOsChoose } = this.props;
     if (!this.wrapperRef.current.contains(target)) {
       const mapArr = _.map(dataPieChart.nameOsArr, function (item) {
         if (item.isChoose === true)
@@ -48,12 +45,10 @@ class PieChart extends Component {
       if (chooseOsArr.length === 0) {
         return alert('Choose at least 1 Os')
       }
-      if (this.checkArraysMatch(this.state.currentOsChoose, chooseOsArr) === true) {
-        return alert("Don't choose duplicate operating systems")
+      if (this.checkArraysMatch(dataPieChart.currentOsChoose, chooseOsArr) === true) {
+        return -1;
       }
-      this.setState({
-        currentOsChoose: chooseOsArr
-      })
+      setCurrentOsChoose(chooseOsArr);
       showLoadingPieChart();
       getDataPieChartChooseByOs(chooseOsArr);
       // xóa bỏ event add Click để tránh rener lại khi click và không gây ảnh hưởng đến các component khác
@@ -124,6 +119,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     showLoadingPieChart: () => { dispatch(actions.showLoadingPieChart()) },
     getDataPieChartChooseByOs: (data) => { dispatch(actions.getDataPieChartChooseByOs(data)) },
+    setCurrentOsChoose: (data) => { dispatch(actions.setCurrentOsChoose(data)) }
   }
 }
 

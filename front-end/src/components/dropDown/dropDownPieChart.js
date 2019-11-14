@@ -9,7 +9,6 @@ import './dropDownPieChart.css'
 const DropDownPieChart = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen(prevState => !prevState);
-  const Data = props.dataPieChart.data;
   const arrOs = props.dataPieChart.nameOsArr;
   const [reRender, setReRender] = useState(false);
   const chooseThisOs = (item) => {

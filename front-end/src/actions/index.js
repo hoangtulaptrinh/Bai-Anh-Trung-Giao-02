@@ -65,3 +65,5 @@ export const getDataPieChartChooseByOs = (data) => {
 export const showLoadingPieChart = () => { return { type: actionTypes.showLoadingPieChart } }
 
 export const getNameOsArr = (nameOsArr) => { return { type: actionTypes.getNameOsArr, nameOsArr: nameOsArr } }
+
+export const setCurrentOsChoose = (dataOsChoose) => { return { type: actionTypes.setCurrentOsChoose, dataOsChoose: dataOsChoose } }
