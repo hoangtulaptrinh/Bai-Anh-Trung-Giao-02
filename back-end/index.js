@@ -28,7 +28,7 @@ app.get('/api/get_data_pie_chart', (req, res) => {
   }
   setTimeout(function () {
     res.send(dataPieChart);
-  }, 1);
+  }, 10000);
 })
 
 app.get('/api/get_data_ranking_chart', (req, res) => {
