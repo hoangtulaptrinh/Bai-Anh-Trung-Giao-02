@@ -6,9 +6,7 @@ let dataPieChart = require('./Data/DataPieChart')
 let dataRankingChart = require('./Data/DataRankingChart')
 let dataHeatMapChart = require('./Data/DataHeatMapChart')
 const _ = require('lodash');
-const nameOsArr = _.map(dataPieChart, function square(n) {
-  return { x: n.x, }
-});
+const nameOsArr = _.map(dataPieChart, (n) => ({ x: n.x }));
 app.get('/', (req, res) => {
   res.send('hello from server!')
 })
