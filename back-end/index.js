@@ -9,7 +9,6 @@ const _ = require('lodash');
 const nameOsArr = _.map(dataPieChart, function square(n) {
   return {
     x: n.x,
-    isChoose: false
   }
 });
 app.get('/', (req, res) => {
@@ -29,7 +28,7 @@ app.get('/api/get_data_pie_chart', (req, res) => {
   }
   setTimeout(function () {
     res.send(dataPieChart);
-  }, 10000);
+  }, 1);
 })
 
 app.get('/api/get_data_ranking_chart', (req, res) => {
@@ -76,11 +75,9 @@ app.get('/api/get_data_pie_chart_choose_by_os', (req, res) => {
     { x: "Unknown", y: _.random(0, 100) },
     { x: "Linux", y: _.random(0, 100) }
   ]
-  let dataPieChartChooseByOs = [];
-  for (let i = 0; i < Object.keys(objOsChoose).length; i++) {
-    _.find(coppyDataPieChart, function (o) { return o.x === objOsChoose[i] });
-    dataPieChartChooseByOs.push(_.find(coppyDataPieChart, function (o) { return o.x === objOsChoose[i] }))
-  }
+  //lọc mảng coppyDataPieChart nếu như x(Os) có tồn tại trong mảng objOsChoose thì để lại không thì lọc bỏ đi
+  let dataPieChartChooseByOs = _.filter(coppyDataPieChart, (o) => _.includes(objOsChoose, o.x))
+
   setTimeout(function () {
     res.send(dataPieChartChooseByOs);
   }, 2000);
