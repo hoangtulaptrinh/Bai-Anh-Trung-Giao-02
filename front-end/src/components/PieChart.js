@@ -2,14 +2,44 @@ import React, { Component } from 'react';
 import { Row, Col, Spinner } from 'reactstrap';
 import { VictoryPie } from 'victory';
 import './PieChart.css';
+import DropDownPieChart from './dropDown/dropDownPieChart'
+import { connect } from 'react-redux';
+import * as actions from '../actions/index';
+import _ from 'lodash'
 
 class PieChart extends Component {
+  constructor(props) {
+    super(props)
+    this.wrapperRef = React.createRef()
+  }
+  addEventClickOnBody = () => {
+    document.addEventListener('click', this.clickOutSide)
+  }
+  clickOutSide = (event) => {
+    const { target } = event;
+    const { dataPieChart, getDataPieChartChooseByOs } = this.props;
+    if (!this.wrapperRef.current.contains(target)) {
+      const mapArr = _.map(dataPieChart.nameOsArr, (item) => {
+        if (item.isChoose === true)
+          return item.x
+      })
+      var chooseOsArr = _.remove(mapArr, (n) => {
+        return n !== undefined;
+      });
+      getDataPieChartChooseByOs(dataPieChart.currentOsChoose, chooseOsArr);
+      // xóa bỏ event add Click để tránh rener lại khi click và không gây ảnh hưởng đến các component khác
+      document.removeEventListener('click', this.clickOutSide)
+    }
+  }
   render() {
     const { Data, checkResponse, colorArr } = this.props
     return (
       <div className='pie-chart'>
-        <div className='pieChart-title'>
+        <div className='title-and-dropDown'>
           <h4>Device Type</h4>
+          <div className='dropDown-pieChart' ref={this.wrapperRef}>
+            <DropDownPieChart addEventClickOnBody={() => this.addEventClickOnBody()} />
+          </div>
         </div>
         {checkResponse === false ?
           <div className='flex-center'>
@@ -51,10 +81,20 @@ class PieChart extends Component {
             </div>
           </div>
         }
-
       </div>
     );
   }
 }
 
-export default PieChart;
+const mapStatetoProps = (state) => {
+  return {
+    dataPieChart: state.dataPieChart,
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getDataPieChartChooseByOs: (currentOsChoose, chooseOsArr) => { dispatch(actions.getDataPieChartChooseByOs({ currentOsChoose: currentOsChoose, chooseOsArr: chooseOsArr })) },
+  }
+}
+
+export default connect(mapStatetoProps, mapDispatchToProps)(PieChart);

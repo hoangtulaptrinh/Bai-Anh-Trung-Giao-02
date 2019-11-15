@@ -6,7 +6,7 @@ let dataPieChart = require('./Data/DataPieChart')
 let dataRankingChart = require('./Data/DataRankingChart')
 let dataHeatMapChart = require('./Data/DataHeatMapChart')
 const _ = require('lodash');
-
+const nameOsArr = _.map(dataPieChart, (n) => ({ x: n.x }));
 app.get('/', (req, res) => {
   res.send('hello from server!')
 })
@@ -22,7 +22,7 @@ app.get('/api/get_data_pie_chart', (req, res) => {
       { x: "Linux", y: _.random(0, 100) }
     ]
   }
-  setTimeout(function () {
+  setTimeout(() => {
     res.send(dataPieChart);
   }, 10000);
 })
@@ -38,7 +38,7 @@ app.get('/api/get_data_ranking_chart', (req, res) => {
       { x: "The Sims", y: _.random(10000000, 100000000) }
     ]
   }
-  setTimeout(function () {
+  setTimeout(() => {
     res.send(dataRankingChart);
   }, 15000);
 })
@@ -56,9 +56,31 @@ app.get('/api/get_data_heat_map_chart', (req, res) => {
       })
     )
   }
-  setTimeout(function () {
+  setTimeout(() => {
     res.send(dataHeatMapChart);
   }, 5000);
+})
+
+app.get('/api/get_data_pie_chart_choose_by_os', (req, res) => {
+  const objOsChoose = req.query;
+  let coppyDataPieChart = [
+    { x: "Android", y: _.random(0, 100) },
+    { x: "Windows", y: _.random(0, 100) },
+    { x: "Ios", y: _.random(0, 100) },
+    { x: "Os X", y: _.random(0, 100) },
+    { x: "Unknown", y: _.random(0, 100) },
+    { x: "Linux", y: _.random(0, 100) }
+  ]
+  //lọc mảng coppyDataPieChart nếu như x(Os) có tồn tại trong mảng objOsChoose thì để lại không thì lọc bỏ đi
+  let dataPieChartChooseByOs = _.filter(coppyDataPieChart, (o) => _.includes(objOsChoose, o.x))
+
+  setTimeout(() => {
+    res.send(dataPieChartChooseByOs);
+  }, 2000);
+})
+
+app.get('/api/get_name_os_arr', (req, res) => {
+  res.send(nameOsArr);
 })
 
 app.listen(5000, () => {
