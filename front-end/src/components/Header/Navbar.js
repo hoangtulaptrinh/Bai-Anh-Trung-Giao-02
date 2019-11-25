@@ -12,7 +12,7 @@ import DeviceList from '../DeviceList'
 function Navbar(props) {
   useEffect(() => {
     props.getApi();
-  })
+  },[])
   return (
     <Router>
       <div className='boss'>
