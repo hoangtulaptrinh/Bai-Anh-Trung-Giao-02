@@ -10,9 +10,10 @@ import Analysis from '../../Analysis'
 import DeviceList from '../DeviceList'
 
 function Navbar(props) {
+  //để tham số thứ 2 là [] để vô hiệu hóa componentdidupdate tránh lỗi render vô hạn
   useEffect(() => {
     props.getApi();
-  })
+  }, [])
   return (
     <Router>
       <div className='boss'>

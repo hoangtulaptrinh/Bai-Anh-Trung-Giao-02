@@ -10,7 +10,7 @@ class Analysis extends Component {
     const { dataPieChart, dataRankingChart, dataHeatMapChart } = this.props
     const colorArr = ["tomato", "orange", "gold", "cyan", "navy", "green"]
     return (
-      <div className='Analysis'>
+      <div className='analysis'>
         <div className='row-1'>
           <PieChart Data={dataPieChart.data} checkResponse={dataPieChart.checkResponse} colorArr={colorArr} />
           <RankingChart Data={dataRankingChart.data} checkResponse={dataRankingChart.checkResponse} />
