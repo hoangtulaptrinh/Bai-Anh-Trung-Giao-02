@@ -1,0 +1,22 @@
+.nav-bar{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 0.1px solid rgba(214,214,215,0.8);
+  padding: 10px 15px 20px 20px;
+  flex: 1;
+}
+.switch-router{
+  display: flex;
+}
+a{
+  color: rgb(127, 133, 136);
+  font-weight: lighter;
+  margin-right: 20px;
+  cursor: pointer;
+  font-size: 30px;
+}
+a:hover{
+  color: rgb(5, 7, 10);
+  text-decoration: none;
+}
