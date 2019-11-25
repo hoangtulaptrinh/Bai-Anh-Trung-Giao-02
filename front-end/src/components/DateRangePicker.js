@@ -6,10 +6,12 @@ import { DateRangePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
 import './DateRangePicker.css'
 import { Button } from 'reactstrap'
+import moment from 'moment'
+import _ from 'lodash'
 
 function DatePicker(props) {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [startDate, setStartDate] = useState(moment().subtract(1, 'days')); // mặc định là hôm qua
+  const [endDate, setEndDate] = useState(moment()); // mặc định là hôm nay
   const [focusedInput, setFocusedInput] = useState(null);
   const [CatchStartAccept, setCatchStartAccept] = useState('');
   const [CatchEndAccept, setCatchEndAccept] = useState('');
@@ -34,7 +36,7 @@ function DatePicker(props) {
     setCatchStartAccept(startDate.format('L'))
     setCatchEndAccept(endDate.format('L'))
     props.showLoading();
-    props.getApi(props.dataDateRangePicker);
+    props.getApi(props.dataDateRangePicker, _.map(_.filter(props.dataPieChart.nameOsArr, (n) => n.isChoose === true), n => n.x));
     setFocusedInput(null) // để null thì đóng calendar
   }
   const Cancel = () => {
@@ -60,13 +62,14 @@ function DatePicker(props) {
 
 const mapStatetoProps = (state) => {
   return {
+    dataPieChart: state.dataPieChart,
     dataDateRangePicker: state.dataDateRangePicker
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getApi: (data) => { dispatch(actions.getApi(data)) },
+    getApi: (data,OsChooseArr) => { dispatch(actions.getApi(data,OsChooseArr)) },
     setDateRangePicker: (startDate, endDate) => { dispatch(actions.setDateRangePicker({ startDate: startDate, endDate: endDate })) },
     showLoading: () => { dispatch(actions.showLoading()) }
   }
