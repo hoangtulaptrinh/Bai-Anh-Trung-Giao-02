@@ -37,7 +37,7 @@ var myReducer = (state = initialState, action) => {
     case actionTypes.getNameOsArr:
       state.nameOsArr = _.map(action.nameOsArr, (n) => ({
         x: n.x,
-        isChoose: false
+        isChoose: true
       }))
 
       return state;
