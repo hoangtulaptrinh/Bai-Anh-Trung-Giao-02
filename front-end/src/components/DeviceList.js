@@ -35,7 +35,7 @@ function DeviceList(props) {
               <tbody>
                 {_.map(props.dataPieChart.data, (item, index) =>
                   (
-                    <tr key={index}>
+                    <tr key={index} className='fix-td'>
                       <td>{item.x}</td>
                       <td>{item.y}</td>
                     </tr>

@@ -1,8 +1,9 @@
 import actionTypes from '../const/actionTypes';
+import moment from 'moment'
 
 var initialState = {
-  startTime: '',
-  endTime: ''
+  startTime: moment().subtract(1, 'days').format('L'),
+  endTime: moment().format('L')
 }
 
 var myReducer = (state = initialState, action) => {

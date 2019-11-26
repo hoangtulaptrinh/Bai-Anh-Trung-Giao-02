@@ -89,6 +89,7 @@ class PieChart extends Component {
 const mapStatetoProps = (state) => {
   return {
     dataPieChart: state.dataPieChart,
+    dataDateRangePicker: state.dataDateRangePicker
   }
 }
 const mapDispatchToProps = (dispatch) => {

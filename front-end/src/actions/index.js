@@ -1,5 +1,6 @@
 import actionTypes from '../const/actionTypes';
 import * as apiCaller from '../api/apiCaller'
+import store from '../store'
 
 const checkArraysMatch = (arr1, arr2) => {
   // kiểm tra độ dài mảng có bằng nhau hay không 
@@ -12,16 +13,24 @@ const checkArraysMatch = (arr1, arr2) => {
   return true;
 }
 
-export const getApi = (data) => {
+export const getApi = (data, OsChooseArr) => {
   let objDate;
+  let objPieChart;
   if (data !== undefined) {
     objDate = {
       from_date: data.startTime,
       to_date: data.endTime
     }
+    objPieChart = {
+      objDate: {
+        from_date: data.startTime,
+        to_date: data.endTime
+      },
+      OsChooseArr: OsChooseArr
+    }
   }
   return (dispatch) => {
-    apiCaller.request_infused_by_params('/api/get_data_pie_chart', 'get', objDate)
+    apiCaller.request_infused_by_params('/api/get_data_pie_chart', 'get', objPieChart)
       .then(res => {
         if (res.statusText === 'OK') {
           dispatch(getDataPieChart(res.data, true))
@@ -39,12 +48,15 @@ export const getApi = (data) => {
           dispatch(getDataHeatMapChart(res.data, true))
         }
       })
-    apiCaller.request_infused_by_params('/api/get_name_os_arr', 'get', null)
-      .then(res => {
-        if (res.statusText === 'OK') {
-          dispatch(getNameOsArr(res.data))
-        }
-      })
+    // chỉ get_name_os_arr 1 lần duy nhất khi chạy componentDidMount
+    if (data === undefined) {
+      apiCaller.request_infused_by_params('/api/get_name_os_arr', 'get', null)
+        .then(res => {
+          if (res.statusText === 'OK') {
+            dispatch(getNameOsArr(res.data))
+          }
+        })
+    }
   }
 }
 
@@ -64,7 +76,10 @@ export const setOsChoose = (nameOs) => { return { type: actionTypes.setOsChoose,
 export const getDataPieChartChooseByOs = (data) => {
   var checkDuplicate = checkArraysMatch(data.currentOsChoose, data.chooseOsArr)
   return (dispatch) => {
-    let objChooseOs = data.chooseOsArr;
+    let objChooseOs = {
+      data: data.chooseOsArr,
+      date: store.getState().dataDateRangePicker
+    }
     if (checkDuplicate === false) {
       dispatch(showLoadingPieChart())
       apiCaller.request_infused_by_params('/api/get_data_pie_chart_choose_by_os', 'get', objChooseOs)

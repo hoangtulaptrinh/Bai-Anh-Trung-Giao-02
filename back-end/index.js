@@ -12,19 +12,25 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/get_data_pie_chart', (req, res) => {
-  if (req.query.from_date !== undefined) {
-    dataPieChart = [
-      { x: "Android", y: _.random(0, 100) },
-      { x: "Windows", y: _.random(0, 100) },
-      { x: "Ios", y: _.random(0, 100) },
-      { x: "Os X", y: _.random(0, 100) },
-      { x: "Unknown", y: _.random(0, 100) },
-      { x: "Linux", y: _.random(0, 100) }
-    ]
+  let coppyDataPieChart = [
+    { x: "Android", y: _.random(0, 100) },
+    { x: "Windows", y: _.random(0, 100) },
+    { x: "Ios", y: _.random(0, 100) },
+    { x: "Os X", y: _.random(0, 100) },
+    { x: "Unknown", y: _.random(0, 100) },
+    { x: "Linux", y: _.random(0, 100) }
+  ]
+  let dataPieChartChooseByOs = _.filter(coppyDataPieChart, (o) => _.includes(req.query.OsChooseArr, o.x))
+  if (req.query.objDate !== undefined && req.query.OsChooseArr !== undefined) {
+    setTimeout(() => {
+      res.send(dataPieChartChooseByOs);
+    }, 1000);
   }
-  setTimeout(() => {
-    res.send(dataPieChart);
-  }, 1000);
+  else {
+    setTimeout(() => {
+      res.send(coppyDataPieChart);
+    }, 1000);
+  }
 })
 
 app.get('/api/get_data_ranking_chart', (req, res) => {
@@ -72,11 +78,12 @@ app.get('/api/get_data_pie_chart_choose_by_os', (req, res) => {
     { x: "Linux", y: _.random(0, 100) }
   ]
   //lọc mảng coppyDataPieChart nếu như x(Os) có tồn tại trong mảng objOsChoose thì để lại không thì lọc bỏ đi
-  let dataPieChartChooseByOs = _.filter(coppyDataPieChart, (o) => _.includes(objOsChoose, o.x))
-
-  setTimeout(() => {
-    res.send(dataPieChartChooseByOs);
-  }, 2000);
+  let dataPieChartChooseByOs = _.filter(coppyDataPieChart, (o) => _.includes(objOsChoose.data, o.x))
+  if (objOsChoose.date !== undefined && objOsChoose.data !== undefined) {
+    setTimeout(() => {
+      res.send(dataPieChartChooseByOs);
+    }, 2000);
+  }
 })
 
 app.get('/api/get_name_os_arr', (req, res) => {
