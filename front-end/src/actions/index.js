@@ -1,5 +1,6 @@
 import actionTypes from '../const/actionTypes';
 import * as apiCaller from '../api/apiCaller'
+import store from '../store'
 
 const checkArraysMatch = (arr1, arr2) => {
   // kiểm tra độ dài mảng có bằng nhau hay không 
@@ -77,7 +78,7 @@ export const getDataPieChartChooseByOs = (data) => {
   return (dispatch) => {
     let objChooseOs = {
       data: data.chooseOsArr,
-      date: data.dateChoose
+      date: store.getState().dataDateRangePicker
     }
     if (checkDuplicate === false) {
       dispatch(showLoadingPieChart())

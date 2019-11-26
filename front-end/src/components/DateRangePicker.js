@@ -69,7 +69,7 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getApi: (data,OsChooseArr) => { dispatch(actions.getApi(data,OsChooseArr)) },
+    getApi: (data, OsChooseArr) => { dispatch(actions.getApi(data, OsChooseArr)) },
     setDateRangePicker: (startDate, endDate) => { dispatch(actions.setDateRangePicker({ startDate: startDate, endDate: endDate })) },
     showLoading: () => { dispatch(actions.showLoading()) }
   }

@@ -26,7 +26,7 @@ class PieChart extends Component {
       var chooseOsArr = _.remove(mapArr, (n) => {
         return n !== undefined;
       });
-      getDataPieChartChooseByOs(dataPieChart.currentOsChoose, chooseOsArr, this.props.dataDateRangePicker);
+      getDataPieChartChooseByOs(dataPieChart.currentOsChoose, chooseOsArr);
       // xóa bỏ event add Click để tránh rener lại khi click và không gây ảnh hưởng đến các component khác
       document.removeEventListener('click', this.clickOutSide)
     }
@@ -94,7 +94,7 @@ const mapStatetoProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    getDataPieChartChooseByOs: (currentOsChoose, chooseOsArr, dateChoose) => { dispatch(actions.getDataPieChartChooseByOs({ currentOsChoose: currentOsChoose, chooseOsArr: chooseOsArr, dateChoose: dateChoose })) },
+    getDataPieChartChooseByOs: (currentOsChoose, chooseOsArr) => { dispatch(actions.getDataPieChartChooseByOs({ currentOsChoose: currentOsChoose, chooseOsArr: chooseOsArr })) },
   }
 }
 
