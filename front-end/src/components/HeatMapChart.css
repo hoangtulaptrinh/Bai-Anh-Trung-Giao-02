@@ -1,10 +1,12 @@
 .heat-map-chart{
   display: flex;
+  flex-direction: column;
   background-color: white;
   border: 0.1px solid rgba(214,214,215,0.8);
   padding: 10px;
   margin: 7px;
-  min-height: 650px;
+  min-height: 450px;
+  flex: 5;
 }
 .heat-map-chart-title >h4{
   font-weight: lighter;
@@ -35,6 +37,6 @@
 .total-progress{
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex: 1;
 }

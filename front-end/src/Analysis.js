@@ -4,6 +4,7 @@ import './Analysis.css';
 import PieChart from './components/PieChart'
 import RankingChart from './components/RankingChart'
 import HeatMapChart from './components/HeatMapChart'
+import LineChart from './components/LineChart'
 
 class Analysis extends Component {
   render() {
@@ -17,6 +18,9 @@ class Analysis extends Component {
         </div>
         <div className='row-2'>
           <HeatMapChart Data={dataHeatMapChart.data} checkResponse={dataHeatMapChart.checkResponse} />
+        {/* </div>
+        <div className='row-3'> */}
+          <LineChart />
         </div>
       </div>
     );

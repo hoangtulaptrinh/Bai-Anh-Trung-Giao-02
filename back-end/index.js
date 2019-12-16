@@ -5,6 +5,7 @@ app.use(bodyParser.json())
 let dataPieChart = require('./Data/DataPieChart')
 let dataRankingChart = require('./Data/DataRankingChart')
 let dataHeatMapChart = require('./Data/DataHeatMapChart')
+let dataLineChart = require('./Data/DataLineChart')
 const _ = require('lodash');
 const nameOsArr = _.map(dataPieChart, (n) => ({ x: n.x }));
 app.get('/', (req, res) => {
@@ -65,6 +66,12 @@ app.get('/api/get_data_heat_map_chart', (req, res) => {
   setTimeout(() => {
     res.send(dataHeatMapChart);
   }, 5000);
+})
+
+app.get('/api/get_data_line_chart', (req, res) => {
+  setTimeout(() => {
+    res.send(dataLineChart);
+  }, 7000);
 })
 
 app.get('/api/get_data_pie_chart_choose_by_os', (req, res) => {

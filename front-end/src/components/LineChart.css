@@ -1,0 +1,82 @@
+.line-chart{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 0.1px solid rgba(214,214,215,0.8);
+  padding: 10px;
+  margin: 7px;
+  min-height: 450px;
+  flex: 3;
+}
+/* .total-line-chart > .VictoryContainer > svg{
+  height: 450px !important;
+  width: 100% !important;
+}
+.total-line-chart > .VictoryContainer > div > svg{
+  height: 450px !important;
+  width: 100% !important;
+} */
+.flex-center-4{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  min-height: auto !important;
+}
+.total-spinner-4{
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+  align-items: center;
+}
+.spinner-4{
+  height: 50px !important;
+  width: 50px !important;
+  margin-right: -30px;
+}
+.all-title-line-chart{
+  display: flex;
+  justify-content: space-between;
+}
+.device-line-chart{
+  margin: 0;
+  flex: 7.5;
+}
+.all-switch-line-chart{
+  flex: 2.5;
+  display: flex;
+  justify-content: space-around;
+}
+.switch-line-chart{
+  cursor: pointer;
+  margin: 0;
+}
+.type-line-chart{
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+}
+.circle-div-line-chart{
+  width: 50px;
+	height: 50px;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	--border-radius: 25px;
+	border-radius: 25px;
+}
+.name-total{
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+.name-type-line-chart,.total-type-line-chart{
+  margin: 0;
+  font-size: 20px;
+}
+.total-line-chart{
+  display: flex;
+  flex-direction: column;
+}
+.all-info-line-chart{
+  display: flex;
+  justify-content: space-around;
+}
