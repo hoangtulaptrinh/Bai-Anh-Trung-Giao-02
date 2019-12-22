@@ -26,7 +26,7 @@ class RankingChart extends Component {
             {/* xóa bỏ cột Y  */}
             <VictoryAxis
               // range={{ x: [50, 250], y: [50, 200] }}
-              offsetY
+              // offsetY
             />
             <VictoryBar horizontal
               labels={({ datum }) => datum.y}

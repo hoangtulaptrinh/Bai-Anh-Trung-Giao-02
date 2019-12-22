@@ -71,7 +71,7 @@ app.get('/api/get_data_heat_map_chart', (req, res) => {
 app.get('/api/get_data_line_chart', (req, res) => {
   setTimeout(() => {
     res.send(dataLineChart);
-  }, 7000);
+  }, 7);
 })
 
 app.get('/api/get_data_pie_chart_choose_by_os', (req, res) => {
