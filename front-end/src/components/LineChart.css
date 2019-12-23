@@ -5,8 +5,9 @@
   border: 0.1px solid rgba(214,214,215,0.8);
   padding: 10px;
   margin: 7px;
-  min-height: 450px;
+  max-height: 450px;
   flex: 3;
+  overflow: scroll;
 }
 /* .total-line-chart > .VictoryContainer > svg{
   height: 450px !important;
