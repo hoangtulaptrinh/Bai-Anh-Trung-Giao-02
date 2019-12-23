@@ -9,5 +9,6 @@ export default {
   getDataPieChartChooseByOs: 'GET_DATA_PIE_CHART_CHOOSE_BY_OS',
   showLoadingPieChart: 'SHOW_LOADING_PIE_CHART',
   getNameOsArr: 'GET_NAME_OS_ARR',
-  setCurrentOsChoose: 'SET_CURRENT_OS_CHOOSE'
+  setCurrentOsChoose: 'SET_CURRENT_OS_CHOOSE',
+  getDataLineChart: 'GET_DATA_LINE_CHART'
 };

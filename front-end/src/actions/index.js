@@ -48,6 +48,12 @@ export const getApi = (data, OsChooseArr) => {
           dispatch(getDataHeatMapChart(res.data, true))
         }
       })
+    apiCaller.request_infused_by_params('/api/get_data_line_chart', 'get', objDate)
+      .then(res => {
+        if (res.statusText === 'OK') {
+          dispatch(getDataLineChart(res.data, true))
+        }
+      })
     // chỉ get_name_os_arr 1 lần duy nhất khi chạy componentDidMount
     if (data === undefined) {
       apiCaller.request_infused_by_params('/api/get_name_os_arr', 'get', null)
@@ -66,6 +72,8 @@ export const getDataPieChart = (data, checkResponse) => { return { type: actionT
 export const getDataRankingChart = (data, checkResponse) => { return { type: actionTypes.getDataRankingChart, data: data, checkResponse: checkResponse } }
 
 export const getDataHeatMapChart = (data, checkResponse) => { return { type: actionTypes.getDataHeatMapChart, data: data, checkResponse: checkResponse } }
+
+export const getDataLineChart = (data, checkResponse) => { return { type: actionTypes.getDataLineChart, data: data, checkResponse: checkResponse } }
 
 export const setDateRangePicker = (data) => { return { type: actionTypes.setDateRangePicker, data: data } }
 

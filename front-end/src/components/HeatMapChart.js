@@ -45,7 +45,7 @@ class App extends Component {
               options={options}
               series={Data}
               type="heatmap"
-              width="1000px"
+              width="700px"
             />
             <div className='total-progress'>
               {
